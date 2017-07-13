@@ -7,37 +7,38 @@ int main()
 	switch(ch){
 	case('+'):
     {	printf("结果%.2f",a[0]+a[1]);
-			rs=a[0]+a[1]; 
-			break;}
+		rs=a[0]+a[1]; 
+	break;}
 	case('-'):
 	{   printf("结果%.2f",a[0]-a[1]);
-			rs=a[0]-a[1];
-			break;}
+		rs=a[0]-a[1];
+	break;}
 	case('*'):
 	{   printf("结果%.2f",a[0]*a[1]);
-			rs=a[0]*a[1];
-			break;	}
+		rs=a[0]*a[1];
+	break;	}
 	case('/'):
 	{   printf("结果%.2f",a[0]/a[1]);
-			rs=a[0]/a[1];
-			break;	}
+		rs=a[0]/a[1];
+	break;	}
 	default:
-	{printf("无结果");
-			break;}
+	{	printf("无结果\n");
+			return 0;}
 	}
     for(n=1;n<100;n++){
 	getchar();
 	printf("\n");
 	scanf("%c%f",&ch,&a[n]);
 	if('+' == ch){
-	rs=rs+a[n];}
+		rs=rs+a[n];}
 	else if('-' == ch){
-	rs=rs-a[n];}
+		rs=rs-a[n];}
 	else if('*' == ch){
-	rs=rs*a[n];}
-	else if('/' == ch){
-	rs=rs/a[n];}
-    else printf("无结果");
+		rs=rs*a[n];}
+	else if('/' == ch && a[n] != 0){
+		rs=rs/a[n];}
+    else{ printf("无结果\n");
+	return 0;}
 	printf("结果%.2f",rs);}
 		return 0;
 }
