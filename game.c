@@ -1,0 +1,79 @@
+#include<stdio.h>
+#include<stdlib.h>//system()能运行所有在终端运行的命令
+#include<time.h>
+
+int main()
+{
+	int user[15],com[15],i,flag=0,n,life1=0,life2=0;
+	char ch;
+	for(i=0;i<15;i++){
+		user[i]=1;
+		com[i]=1;
+	}
+	
+	srand((unsigned)time(NULL));
+	//每运行一次清屏一次
+
+	while(1){
+		printf("1-->进攻\n2-->撤退\n");
+		scanf("%c",&ch);
+		while(getchar()!='\n');
+		switch(ch){
+		case'1':
+			for(i=0;i<3;i++){
+				n=rand()%15;
+				user[n]=0;
+			}
+			life1=0;
+			for(i=0;i<15;i++){
+				life1+=user[i];
+			}
+			printf("玩家生命值%d\n",life1);
+			if(life1==0){
+				printf("游戏结束，你输了，充钱你会变得更强\n");
+				exit(1);
+			}	
+			for(i=0;i<3;i++){
+				n=rand()%15;
+				com[n]=0;
+			}
+			life2=0;
+			for(i=0;i<15;i++){
+				life2+=com[i];
+			}
+			printf("电脑生命值%d\n",life2);
+			if(life2==0){
+				printf("游戏结束，年轻人你赢了\n");
+				exit(1);
+			}
+			break;
+		case'2':
+			n=rand()%4;
+			if(n==0){
+				printf("想跑？没门\n");
+				for(i=0;i<3;i++){
+					n=rand()%15;
+					user[n]=0;
+				}
+				life1=0;
+				for(i=0;i<15;i++){
+					life1+=user[i];
+				}
+				printf("玩家生命值%d\n",life1);
+				if(life1==0){
+					printf("游戏结束，你还是输了，充钱吧");
+					exit(1);
+				}
+			}
+			else{
+				printf("打不过就跑，干得不错\n");
+				exit(1);
+			}
+		break;
+		default:
+			printf("输入无效，请按回车键继续\n");
+			while(getchar()!='\n');
+		}
+	}		
+	return 0;
+}
